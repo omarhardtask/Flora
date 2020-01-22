@@ -79,7 +79,6 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/app_bar"
         app:backgroundTint="@color/white"
-        android:backgroundTint="@color/white"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@drawable/fave_icon_sel"
         />

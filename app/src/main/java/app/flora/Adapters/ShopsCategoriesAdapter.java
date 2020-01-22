@@ -1,6 +1,7 @@
 package app.flora.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import app.flora.Global.FloraConstant;
+import app.flora.Global.LanguageSessionManager;
 import app.flora.Global.Navigator;
 import app.flora.Models.CategoriesModel;
 import app.flora.Models.Category;
@@ -67,6 +69,20 @@ public class ShopsCategoriesAdapter extends RecyclerView.Adapter<ShopsCategories
         }
 
         Log.i(FloraConstant.TAG, "getTitle  : " + list.get(position).getLocalizedName());
+
+        if (LanguageSessionManager.getLang().equals("en")) {
+            holder.tv_shop.setTypeface(Typeface.createFromAsset(context.getAssets(), FloraConstant.
+                    ENGLISH_BOLD));
+
+            holder.tv_shop.setTypeface(Typeface.createFromAsset(context.getAssets(), FloraConstant.
+                    ENGLISH_BOLD));
+        } else if (LanguageSessionManager.getLang().equals("ar")) {
+            holder.tv_shop.setTypeface(Typeface.createFromAsset(context.getAssets(), FloraConstant.
+                    ARABIC_BOLD));
+
+            holder.tv_shop.setTypeface(Typeface.createFromAsset(context.getAssets(), FloraConstant.
+                    ARABIC_BOLD));
+        }
 
         holder.tv_shop.setText(list.get(position).getLocalizedName());
 

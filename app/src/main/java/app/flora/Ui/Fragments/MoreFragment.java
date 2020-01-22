@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class MoreFragment extends Fragment {
 
     TextView user_status;
+    RelativeLayout rel_logout;
     View view;
     static FragmentActivity act;
 
@@ -61,7 +63,7 @@ public class MoreFragment extends Fragment {
             Log.i(FloraConstant.TAG, "btn_status login");
 
 
-            user_status.setOnClickListener(new View.OnClickListener() {
+            rel_logout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
@@ -72,9 +74,10 @@ public class MoreFragment extends Fragment {
                 }
             });
 
-        } else if (user_status.getText().equals(getActivity().getString(R.string.logout))) {
+        }
+        else if (user_status.getText().equals(getActivity().getString(R.string.logout))) {
             Log.i(FloraConstant.TAG, "btn_status logout");
-            user_status.setOnClickListener(new View.OnClickListener() {
+            rel_logout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     new AlertDialog.Builder(getActivity())
@@ -161,6 +164,7 @@ public class MoreFragment extends Fragment {
 
     private void initViews() {
         user_status = view.findViewById(R.id.user_status);
+        rel_logout = view.findViewById(R.id.rel_logout);
     }
 
     private void initVisibility() {

@@ -424,10 +424,10 @@ public class ProductDetailsFragment extends Fragment {
     private void setData() {
 
         if (product.getAdded_to_wishlist()) {
-            fab.setImageDrawable(act.getDrawable(R.drawable.fave_icon_sel));
+            fab.setImageResource(R.drawable.fave_icon_sel);
             Log.i(FloraConstant.TAG, "(product.getAdded_to_wishlist().equals(true)" + product.getAdded_to_wishlist());
         } else {
-            fab.setImageDrawable(act.getDrawable(R.drawable.fave_icon_unsel));
+            fab.setImageResource(R.drawable.fave_icon_unsel);
             Log.i(FloraConstant.TAG, "(product.getAdded_to_wishlist().equals(false)" + product.getAdded_to_wishlist());
         }
 

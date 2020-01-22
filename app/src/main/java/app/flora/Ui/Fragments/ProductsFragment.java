@@ -53,9 +53,12 @@ public class ProductsFragment extends Fragment {
     ProgressBar loadingProgress;
     @BindView(R.id.tv_msg)
     TextView tv_msg;
+    @BindView(R.id.loading_progress_products)
+    ProgressBar loading_progress_products;
 
     // vars
-    String shop_name = "", comeFrom = "", productCategoryId = "";
+    String shop_name = "", comeFrom = "", productCategoryId = "",
+            manufacturer_id = "";
     private ArrayList<Product> productsArrayList = new ArrayList<>();
     private ArrayList<Category> categoryProductsArrayList = new ArrayList<>();
     private ArrayList<Category> updateArrayList = new ArrayList<>();
@@ -71,7 +74,6 @@ public class ProductsFragment extends Fragment {
     int pastVisiblesItems, visibleItemCount, totalItemCount;
     int pastVisiblesItems_, visibleItemCount_, totalItemCount_;
     Product product;
-
     int savedPos = 0;
 
     @Override
@@ -80,15 +82,23 @@ public class ProductsFragment extends Fragment {
         ButterKnife.bind(this, view);
         Log.i(FloraConstant.TAG, "ShopsFragment Called");
         getProductName();
+        getManufactureId();
         initComeFrom();
         initVisibility();
         initProductsList();
-        if (!comeFrom.equals("FeaturedShops")) {
-            initCatProductsList();
-        }
+        initCatProductsList();
         return view;
 
     } // onCreateView
+
+    private void getManufactureId() {
+        if (getArguments().containsKey("ManufactureId")) {
+            manufacturer_id = getArguments().getString("ManufactureId");
+        }
+
+        Log.i(FloraConstant.TAG, "getManufactureId = " + manufacturer_id);
+
+    } // getManufactureId
 
     private void initComeFrom() {
 
@@ -118,7 +128,7 @@ public class ProductsFragment extends Fragment {
 
         if (getArguments().containsKey("comeFrom")) {
             comeFrom = getArguments().getString("comeFrom");
-            Log.i(FloraConstant.TAG, "get comeFrom in  shops fragment : " + comeFrom);
+            Log.i(FloraConstant.TAG, "get comeFrom in  products fragment : " + comeFrom);
         }
 
         if (getArguments() != null) {
@@ -154,6 +164,9 @@ public class ProductsFragment extends Fragment {
         if (comeFrom.equals("true")) {
             Log.i(FloraConstant.TAG, "comeFrommmmmm: " + comeFrom);
             fetchProductsByCategory(String.valueOf(product.getId()));
+        } else if (comeFrom.equals("Occasions")) {
+            Log.i(FloraConstant.TAG, "comeFrommmmmm: " + comeFrom);
+            fetchOccasionsProducts();
         } else {
             Log.i(FloraConstant.TAG, "comeFrommmmmm elsee : " + comeFrom);
 
@@ -167,16 +180,22 @@ public class ProductsFragment extends Fragment {
     } //  initProductsList
 
     private void initCatProductsList() {
-        if (categoryProductsArrayList.size() > 0) {
-            initCatProductsRecyclerView();
-        } else {
-            fetchCatProducts();
+
+        if (!comeFrom.equals("FeaturedShops") && !comeFrom.equals("Occasions")) {
+            if (categoryProductsArrayList.size() > 0) {
+                initCatProductsRecyclerView();
+            } else {
+                fetchCatProducts();
+            }
         }
+
+
     } //  initCatProductsList
 
     private void fetchCatProducts() {
+        Log.i(FloraConstant.TAG, "fetchCatProducts called : ");
 
-        loadingProgress.setVisibility(View.VISIBLE);
+        //loadingProgress.setVisibility(View.VISIBLE);
         FloraApiCall.getCallingAPIInterface().
                 fetchCategories(
                         LanguageSessionManager.getLang(),
@@ -211,10 +230,63 @@ public class ProductsFragment extends Fragment {
 
     } // fetchCatProducts
 
+    public void fetchOccasionsProducts() {
+
+        loadingProgress.setVisibility(View.VISIBLE);
+        Log.i(FloraConstant.TAG, "get manufacturer_id in product list fragment : " + manufacturer_id);
+        FloraApiCall.getCallingAPIInterface().fetchOccasionsProducts(
+                LanguageSessionManager.getLang(),
+                FloraConstant.AuthorizationToken,
+                FloraConstant.Limit,
+                page_index + "",
+                manufacturer_id,
+                new Callback<GetProducts>() {
+                    @Override
+                    public void success(GetProducts outResponse, Response response) {
+
+                        if (outResponse != null) {
+                            productsArrayList.clear();
+                            productsArrayList.addAll(outResponse.getProducts());
+
+                            if (productsArrayList.isEmpty()) {
+                                page_index = page_index - 1;
+                            }
+
+                            if (productsArrayList.size() == 0) {
+                                rv_products.setVisibility(View.GONE);
+                                tv_msg.setText(getString(R.string.products_empty));
+                                tv_msg.setVisibility(View.VISIBLE);
+                            }
+
+                            if (productsArrayList.size() > 0) {
+                                Log.i(FloraConstant.TAG, "productArrayList success array size = "
+                                        + productsArrayList.size());
+                                initProductsRecyclerView();
+                            } else {
+                                Log.i(FloraConstant.TAG, "productArrayList = null");
+
+                            }
+
+
+                            setPagingOccasionsProduct();
+
+                            loading_flag = true;
+                        }
+                        loadingProgress.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        loadingProgress.setVisibility(View.GONE);
+                        FixControl.showErrorMessage(error, getView());
+                    }
+                });
+    } // fetchOccasionsProducts
+
 
     public void fetchProducts() {
 
-        loadingProgress.setVisibility(View.VISIBLE);
+        loading_progress_products.setVisibility(View.VISIBLE);
         Log.i(FloraConstant.TAG, "get shop_name in product list fragment : " + shop_name);
         FloraApiCall.getCallingAPIInterface().fetchProducts(
                 LanguageSessionManager.getLang(),
@@ -242,7 +314,6 @@ public class ProductsFragment extends Fragment {
                             }
 
                             if (productsArrayList.size() > 0) {
-                                initProductsList();
                                 Log.i(FloraConstant.TAG, "productArrayList success array size = "
                                         + productsArrayList.size());
 
@@ -256,16 +327,127 @@ public class ProductsFragment extends Fragment {
 
                             loading_flag = true;
                         }
+                        loading_progress_products.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        loading_progress_products.setVisibility(View.GONE);
+                        FixControl.showErrorMessage(error, getView());
+                    }
+                });
+    } // fetchProducts
+
+    private void setPagingOccasionsProduct() {
+
+        rv_products.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+                if (!endOfREsults) {
+
+                    visibleItemCount = gridLayoutManager.getChildCount();
+
+                    totalItemCount = gridLayoutManager.getItemCount();
+
+                    pastVisiblesItems = gridLayoutManager.findFirstVisibleItemPosition();
+
+                    if (loading_flag) {
+                        if ((visibleItemCount + pastVisiblesItems) + 2 >= totalItemCount) {
+                            loading_flag = false;
+                            page_index = page_index + 1;
+
+                            Log.i(FloraConstant.TAG, "GetMoreProducts called in condition");
+                            fetchMoreOccasionsProducts();
+                        }
+                    }
+                }
+            }
+        });
+
+    } // set pagination
+
+
+    private void fetchMoreProducts() {
+        Log.i(FloraConstant.TAG, "GetMoreProducts called: ");
+
+        loadingProgress.setVisibility(View.VISIBLE);
+
+        Log.i(FloraConstant.TAG, "get cat_id in product list fragment : " + shop_name);
+        FloraApiCall.getCallingAPIInterface().fetchProducts(
+                LanguageSessionManager.getLang(),
+                FloraConstant.AuthorizationToken,
+                MainActivity.getUserId(),
+                shop_name,
+                FloraConstant.Limit,
+                page_index + "",
+                new Callback<GetProducts>() {
+                    @Override
+                    public void success(GetProducts outResponse, Response response) {
+
+                        loadingProgress.setVisibility(View.GONE);
+                        if (outResponse != null) {
+                            if (outResponse.getProducts().isEmpty()) {
+                                page_index = page_index - 1;
+                                endOfREsults = true;
+                            }
+                            productsArrayList.addAll(outResponse.getProducts());
+                            Log.i(FloraConstant.TAG, "GetMoreProducts arrayList : " + productsArrayList.size());
+
+                            productsAdapter.notifyDataSetChanged();
+                            loading_flag = true;
+                        }
                         loadingProgress.setVisibility(View.GONE);
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         loadingProgress.setVisibility(View.GONE);
-                        FixControl.showErrorMessage(error, getView());
                     }
                 });
-    } // fetchProducts
+
+    } // fetchMoreProducts
+
+
+    private void fetchMoreOccasionsProducts() {
+        Log.i(FloraConstant.TAG, "GetMoreProducts called: ");
+
+        loadingProgress.setVisibility(View.VISIBLE);
+
+        Log.i(FloraConstant.TAG, "get cat_id in product list fragment : " + shop_name);
+        FloraApiCall.getCallingAPIInterface().fetchOccasionsProducts(
+                LanguageSessionManager.getLang(),
+                FloraConstant.AuthorizationToken,
+                FloraConstant.Limit,
+                page_index + "",
+                manufacturer_id,
+                new Callback<GetProducts>() {
+                    @Override
+                    public void success(GetProducts outResponse, Response response) {
+
+                        loadingProgress.setVisibility(View.GONE);
+                        if (outResponse != null) {
+                            if (outResponse.getProducts().isEmpty()) {
+                                page_index = page_index - 1;
+                                endOfREsults = true;
+                            }
+                            productsArrayList.addAll(outResponse.getProducts());
+                            Log.i(FloraConstant.TAG, "GetMoreProducts arrayList : " + productsArrayList.size());
+
+                            productsAdapter.notifyDataSetChanged();
+                            loading_flag = true;
+                        }
+                        loadingProgress.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        loadingProgress.setVisibility(View.GONE);
+                    }
+                });
+
+    } // fetchMoreOccasionsProducts
+
 
     private void setPaging() {
 
@@ -365,47 +547,6 @@ public class ProductsFragment extends Fragment {
                 });
 
     } // fetchMoreProductsByCategory
-
-
-    private void fetchMoreProducts() {
-        Log.i(FloraConstant.TAG, "GetMoreProducts called: ");
-
-        loadingProgress.setVisibility(View.VISIBLE);
-
-        Log.i(FloraConstant.TAG, "get cat_id in product list fragment : " + shop_name);
-        FloraApiCall.getCallingAPIInterface().fetchProducts(
-                LanguageSessionManager.getLang(),
-                FloraConstant.AuthorizationToken,
-                MainActivity.getUserId(),
-                shop_name,
-                FloraConstant.Limit,
-                page_index + "",
-                new Callback<GetProducts>() {
-                    @Override
-                    public void success(GetProducts outResponse, Response response) {
-
-                        loadingProgress.setVisibility(View.GONE);
-                        if (outResponse != null) {
-                            if (outResponse.getProducts().isEmpty()) {
-                                page_index = page_index - 1;
-                                endOfREsults = true;
-                            }
-                            productsArrayList.addAll(outResponse.getProducts());
-                            Log.i(FloraConstant.TAG, "GetMoreProducts arrayList : " + productsArrayList.size());
-
-                            productsAdapter.notifyDataSetChanged();
-                            loading_flag = true;
-                        }
-                        loadingProgress.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        loadingProgress.setVisibility(View.GONE);
-                    }
-                });
-
-    } // fetchMoreProducts
 
 
     private void initCatProductsRecyclerView() {

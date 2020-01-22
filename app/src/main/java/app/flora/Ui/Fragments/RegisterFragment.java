@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -37,6 +38,7 @@ import app.flora.Adapters.genderAdapter;
 import app.flora.Global.FixControl;
 import app.flora.Global.FloraConstant;
 import app.flora.Global.LanguageSessionManager;
+import app.flora.Global.LocaleHelper;
 import app.flora.Global.Navigator;
 import app.flora.Global.SessionManager;
 import app.flora.Models.Customer;
@@ -45,12 +47,15 @@ import app.flora.Models.GetCustomer;
 import app.flora.Network.FloraApiCall;
 import app.flora.R;
 import app.flora.Ui.Activities.MainActivity;
+import app.flora.Ui.Activities.SplashScreen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit.RetrofitError;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 import static android.content.Context.MODE_PRIVATE;
+import static app.flora.Ui.Activities.MainActivity.isEnglish;
 
 public class RegisterFragment extends Fragment {
 
@@ -116,6 +121,62 @@ public class RegisterFragment extends Fragment {
         return view;
     } // onCreateView
 
+    @OnClick(R.id.tv_language)
+    public void clickLanguage() {
+        FragmentManager fm = getFragmentManager();
+        Log.i(FloraConstant.TAG, "Stack before change language : " + fm.getBackStackEntryCount());
+
+        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
+            fm.popBackStack();
+        }
+        Log.i(FloraConstant.TAG, "Stack after change language : " + fm.getBackStackEntryCount());
+        changeLanguage();
+    } // click on change language
+
+    private void changeLanguage() {
+
+        if (isEnglish) {
+            Log.i(FloraConstant.TAG, "setLang ar");
+            LanguageSessionManager.setLang("ar");
+            updateViews("ar");
+            isEnglish = false;
+            Intent intent = new Intent(getActivity(), SplashScreen.class);
+            SharedPreferences.Editor editor = getActivity().
+                    getSharedPreferences(FloraConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
+            editor.putString("guest", "2").apply();
+            intent.putExtra("comeFrom", "register");
+            getActivity().startActivity(intent);
+            getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            getActivity().finish();
+            CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                    .setDefaultFontPath(FloraConstant.ARABIC_FONT)
+                    .setFontAttrId(R.attr.fontPath)
+                    .build());
+        } else {
+            Log.i(FloraConstant.TAG, "setLang en");
+            LanguageSessionManager.setLang("en");
+            updateViews("en");
+            isEnglish = true;
+            Intent intent = new Intent(getActivity(), SplashScreen.class);
+            SharedPreferences.Editor editor = getActivity().
+                    getSharedPreferences(FloraConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
+            editor.putString("guest", "2").apply();
+            //intent.putExtra("comeFrom", "register");
+            getActivity().startActivity(intent);
+            getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            getActivity().finish();
+            CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                    .setDefaultFontPath(FloraConstant.ENGLISH_FONT)
+                    .setFontAttrId(R.attr.fontPath)
+                    .build());
+        }
+    } // change language
+
+    private void updateViews(String languageCode) {
+        LocaleHelper.setLocale(getActivity(), languageCode);
+    } // update view method
+
+
     @OnClick(R.id.tv_terms)
     public void terms() {
         WebViewFragment aboutFragment = new WebViewFragment();
@@ -151,6 +212,13 @@ public class RegisterFragment extends Fragment {
 
     @OnClick(R.id.linear_birth)
     public void initBirth() {
+        new DatePickerDialog(getActivity(), date, myCalendar
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+    } // initBirthday
+
+    @OnClick(R.id.tv_birthday)
+    public void initBirthTextView() {
         new DatePickerDialog(getActivity(), date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -247,18 +315,18 @@ public class RegisterFragment extends Fragment {
         customer.setEmail(Objects.requireNonNull(et_email.getText()).toString());
         customer.setPhone(Objects.requireNonNull(et_mobile.getText()).toString());
 
-        if (et_gender.getText().toString().equals("Male"))
-        {
+        if (et_gender.getText().toString().equals("Male")) {
             customer.setGender("M");
-        }
-        else   if (et_gender.getText().toString().equals("Female"))
-        {
+        } else if (et_gender.getText().toString().equals("Female")) {
             customer.setGender("F");
 
         }
 
-        customer.setDate_of_birth(et_day.getText().toString() + et_month.getText().toString()
-                + et_year.getText().toString());
+        customer.setDate_of_birth(et_year.getText().toString() + "-" + et_month.getText().toString()
+                + "-" + et_day.getText().toString());
+        getCustomer.setCustomer(customer);
+
+
 
         if (!isEdit || isCart) {
             customer.setPassword(et_password.getText().toString());
@@ -272,41 +340,35 @@ public class RegisterFragment extends Fragment {
     private boolean isAllFieldValid() {
         boolean result = true;
 
-        if (et_email.getText().toString().length() == 0)
-        {
+        if (et_email.getText().toString().length() == 0) {
             Snackbar.make(coordinator_layout, getString(R.string.email_empty), Snackbar.LENGTH_LONG).show();
             return false;
         }
 
-        if (et_first_name.getText().toString().length() == 0)
-        {
+        if (et_first_name.getText().toString().length() == 0) {
             Snackbar.make(coordinator_layout, getString(R.string.first_name) + " " +
-                    getString(R.string.cant_empty)  , Snackbar.LENGTH_LONG).show();
+                    getString(R.string.cant_empty), Snackbar.LENGTH_LONG).show();
             return false;
         }
 
-        if (et_last_name.getText().toString().length() == 0)
-        {
+        if (et_last_name.getText().toString().length() == 0) {
             Snackbar.make(coordinator_layout, getString(R.string.last_name)
                     + " " +
-                    getString(R.string.cant_empty) , Snackbar.LENGTH_LONG).show();
+                    getString(R.string.cant_empty), Snackbar.LENGTH_LONG).show();
             return false;
         }
 
-        if (et_mobile.getText().toString().length() == 0)
-        {
+        if (et_mobile.getText().toString().length() == 0) {
             Snackbar.make(coordinator_layout, getString(R.string.mobile_empty), Snackbar.LENGTH_LONG).show();
             return false;
         }
 
-        if (et_password.getText().toString().length() == 0)
-        {
+        if (et_password.getText().toString().length() == 0) {
             Snackbar.make(coordinator_layout, getString(R.string.password_empty), Snackbar.LENGTH_LONG).show();
             return false;
         }
 
-        if (et_confirm_password.getText().toString().length() == 0)
-        {
+        if (et_confirm_password.getText().toString().length() == 0) {
             Snackbar.make(coordinator_layout, getString(R.string.confirm_password_empty), Snackbar.LENGTH_LONG).show();
             return false;
         }
@@ -382,19 +444,18 @@ public class RegisterFragment extends Fragment {
                                                             ".getBackStackEntryCount() >= 2");
                                                     getFragmentManager().popBackStack();
                                                     MainActivity.registerGuest();
-                                                }
-                                                else {
+                                                } else {
                                                     Log.i(FloraConstant.TAG, "registerIntent");
-                                                    Intent main = new Intent(getContext() , MainActivity.class);
-                                                    main.putExtra("comeFrom" , "");
+                                                    Intent main = new Intent(getContext(), MainActivity.class);
+                                                    main.putExtra("comeFrom", "");
                                                     startActivity(main);
                                                     SharedPreferences.Editor editor = getActivity().getSharedPreferences(
                                                             FloraConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
                                                     editor.putString("guest", "1").apply();
                                                     getActivity().finish();
                                                 }
+                                            } catch (Exception e) {
                                             }
-                                            catch (Exception e){}
                                             Log.i(FloraConstant.TAG, "not null 2");
                                         }
                                     }

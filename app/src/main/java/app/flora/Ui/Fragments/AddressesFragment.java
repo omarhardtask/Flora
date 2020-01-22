@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +71,9 @@ public class AddressesFragment extends Fragment {
     @BindView(R.id.tv_msg)
     TextView tv_msg;
 
+
+    @BindView(R.id.layout)
+    RelativeLayout layout;
 
     LinearLayoutManager layoutManager;
     AddressesAdapter adapter;
@@ -298,6 +302,7 @@ public class AddressesFragment extends Fragment {
     private void deleteAddress(int position) {
 
         Log.i(FloraConstant.TAG, "deleteAddress called");
+        FixControl.DisableLayout(layout);
 
         FloraApiCall.getCallingAPIInterface().deleteAddress(
                 LanguageSessionManager.getLang(),
@@ -340,10 +345,13 @@ public class AddressesFragment extends Fragment {
                             }
                         }
                         mloading.setVisibility(View.INVISIBLE);
+                        FixControl.EnableLayout(layout);
+
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
+                        FixControl.EnableLayout(layout);
                         FixControl.showErrorMessage(error, getView());
                         mloading.setVisibility(View.INVISIBLE);
                     }
@@ -511,8 +519,7 @@ public class AddressesFragment extends Fragment {
                                 Fragment fragment = new PayPaymentFragment();
                                 fragment.setArguments(b);
                                 Navigator.loadFragment(getActivity(), fragment, R.id.fragment_container, true, "home");
-                            }
-                            else {
+                            } else {
                                 Log.i(FloraConstant.TAG, "ordersss response elsee" + outResponse);
 
                                 Order cOrder = new Order();

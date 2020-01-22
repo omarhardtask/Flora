@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -28,19 +30,23 @@ import java.util.Objects;
 import app.flora.Global.FixControl;
 import app.flora.Global.FloraConstant;
 import app.flora.Global.LanguageSessionManager;
+import app.flora.Global.LocaleHelper;
 import app.flora.Global.Navigator;
 import app.flora.Global.SessionManager;
 import app.flora.Models.GetCustomer;
 import app.flora.Network.FloraApiCall;
 import app.flora.R;
 import app.flora.Ui.Activities.MainActivity;
+import app.flora.Ui.Activities.SplashScreen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit.Callback;
 import retrofit.RetrofitError;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 import static android.content.Context.MODE_PRIVATE;
+import static app.flora.Ui.Activities.MainActivity.isEnglish;
 
 public class LoginFragment extends Fragment {
 
@@ -57,9 +63,13 @@ public class LoginFragment extends Fragment {
     @BindView(R.id.loading_progress)
     ProgressBar loading_progress;
 
+    @BindView(R.id.tv_language)
+    TextView tv_language;
+
+    // vars
 
     String coming = "";
-
+    FragmentManager fm;
 
     @Nullable
     @Override
@@ -71,6 +81,55 @@ public class LoginFragment extends Fragment {
         checkComeFrom();
         return view;
     }
+
+    @OnClick(R.id.tv_language)
+    public void clickLanguage() {
+        fm = getFragmentManager();
+        Log.i(FloraConstant.TAG, "Stack before change language : " + fm.getBackStackEntryCount());
+        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
+            fm.popBackStack();
+        }
+        Log.i(FloraConstant.TAG, "Stack after change language : " + fm.getBackStackEntryCount());
+        changeLanguage();
+    } // click on change language
+
+    private void changeLanguage() {
+
+        if (isEnglish) {
+            Log.i(FloraConstant.TAG, "setLang ar");
+            LanguageSessionManager.setLang("ar");
+            SessionManager.setKEY_LangId("2");
+            updateViews("ar");
+            isEnglish = false;
+            Intent intent = new Intent(getActivity(), SplashScreen.class);
+            //intent.putExtra("comeFrom", "login");
+            getActivity().startActivity(intent);
+            getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            getActivity().finish();
+            CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                    .setDefaultFontPath(FloraConstant.ARABIC_FONT)
+                    .setFontAttrId(R.attr.fontPath)
+                    .build());
+        } else {
+            Log.i(FloraConstant.TAG, "setLang en");
+            LanguageSessionManager.setLang("en");
+            updateViews("en");
+            isEnglish = true;
+            Intent intent = new Intent(getActivity(), SplashScreen.class);
+           // intent.putExtra("comeFrom", "login");
+            getActivity().startActivity(intent);
+            getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            getActivity().finish();
+            CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                    .setDefaultFontPath(FloraConstant.ENGLISH_FONT)
+                    .setFontAttrId(R.attr.fontPath)
+                    .build());
+        }
+    } // change language
+
+    private void updateViews(String languageCode) {
+        LocaleHelper.setLocale(getActivity(), languageCode);
+    } // update view method
 
     private void initVisibility() {
         ((MainActivity) Objects.requireNonNull(getActivity())).title.setText("");
@@ -226,8 +285,7 @@ public class LoginFragment extends Fragment {
                                         if (getFragmentManager().getBackStackEntryCount() > 1) {
                                             getFragmentManager().popBackStack();
                                             MainActivity.registerGuest();
-                                        }
-                                        else {
+                                        } else {
                                             Intent main = new Intent(getContext(), MainActivity.class);
                                             main.putExtra("comeFrom", "");
                                             startActivity(main);

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,6 +89,9 @@ public class AddAddressFragment extends Fragment {
     Button btn_add_address;
     @BindView(R.id.loading1)
     ProgressBar loading1;
+    @BindView(R.id.layout)
+    ScrollView layout;
+
 
     // variables
     boolean isEdit = false;
@@ -481,6 +485,7 @@ public class AddAddressFragment extends Fragment {
 
         Log.i(FloraConstant.TAG, "editAddress called ");
 
+        FixControl.DisableLayout(layout);
         mloading.setVisibility(View.VISIBLE);
         prepareAddressData();
         FloraApiCall.getCallingAPIInterface().editAddress(
@@ -501,21 +506,25 @@ public class AddAddressFragment extends Fragment {
                                 if (outResponse.getAddresses().size() > 0) {
                                     address = outResponse.getAddresses().get(0);
                                     try {
+                                        getFragmentManager().popBackStack();
                                         Toast.makeText(getActivity(), getString(R.string.address_edited), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                     }
                                     Log.i(FloraConstant.TAG, "editAddress .size() > 0");
-                                    getFragmentManager().popBackStack();
+
 
                                 }
                             }
                         } else {
                             Log.i(FloraConstant.TAG, "null");
                         }
+                        FixControl.EnableLayout(layout);
+
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
+                        FixControl.EnableLayout(layout);
                         FixControl.showErrorMessage(error, getView());
                         mloading.setVisibility(View.GONE);
                         Log.i(FloraConstant.TAG, "RetrofitError" + error.getMessage());
@@ -526,6 +535,8 @@ public class AddAddressFragment extends Fragment {
     private void addAddress() {
 
         mloading.setVisibility(View.VISIBLE);
+        FixControl.DisableLayout(layout);
+
         prepareAddressData();
         FloraApiCall.getCallingAPIInterface().addAddress(
                 languageSeassionManager.getLang(),
@@ -552,10 +563,13 @@ public class AddAddressFragment extends Fragment {
                         } else {
                             Log.i(FloraConstant.TAG, "null");
                         }
+                        FixControl.EnableLayout(layout);
+
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
+                        FixControl.EnableLayout(layout);
                         FixControl.showErrorMessage(error, getView());
                         mloading.setVisibility(View.GONE);
                         Log.i(FloraConstant.TAG, error.getLocalizedMessage());

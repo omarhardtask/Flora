@@ -1,6 +1,7 @@
 package app.flora.Ui.Fragments.Home;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -71,6 +73,12 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.img_arrow_2)
     ImageView img_arrow_2;
 
+    @BindView(R.id.tv_feature_shops)
+    TextView tv_feature_shops;
+
+    @BindView(R.id.tv_feature_products)
+    TextView tv_feature_products;
+
     @BindView(R.id.loading_progress)
     ProgressBar loading_progress;
 
@@ -98,6 +106,7 @@ public class HomeFragment extends Fragment {
         ButterKnife.bind(this, view);
         Log.i(FloraConstant.TAG, "HomeFragment Called");
         initVisibility();
+        initBold();
         initViewModel();
         initSlider();
         initRotation();
@@ -106,6 +115,25 @@ public class HomeFragment extends Fragment {
         initFeaturedProductsList();
         return view;
     } // onCreateView
+
+    private void initBold() {
+        if (LanguageSessionManager.getLang().equals("en"))
+        {
+            tv_feature_shops.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), FloraConstant.
+                    ENGLISH_BOLD));
+
+            tv_feature_products.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), FloraConstant.
+                    ENGLISH_BOLD));
+        }
+        else if (LanguageSessionManager.getLang().equals("ar"))
+        {
+            tv_feature_shops.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), FloraConstant.
+                    ARABIC_BOLD));
+
+            tv_feature_products.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), FloraConstant.
+                    ARABIC_BOLD));
+        }
+    } // initBold
 
     @OnClick(R.id.img_arrow_2)
     public void initFeatureProducts() {

@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -58,6 +59,7 @@ import app.flora.Ui.Fragments.LoginFragment;
 import app.flora.Ui.Fragments.MoreFragment;
 import app.flora.Ui.Fragments.OccasionsFragment;
 import app.flora.Ui.Fragments.ProductsFragment;
+import app.flora.Ui.Fragments.RegisterFragment;
 import app.flora.Ui.Fragments.SearchFragment;
 import app.flora.Ui.Fragments.ShopsCategoriesFragment;
 import butterknife.BindView;
@@ -108,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
     static AppCompatActivity act;
     public static ImageLoader mImageLoader;
     public static boolean isEnglish = false;
+    String coming = "";
+
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -122,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initViews();
         initLanguage();
+        // checkComeFrom();
         shoppingCartItemsCount();
         registerGuest();
         getGuestValue();
@@ -137,17 +142,34 @@ public class MainActivity extends AppCompatActivity {
                     Navigator.loadFragment(this, homeFragment, R.id.fragment_container, false, "");
                     Log.i(FloraConstant.TAG, "login as a guest clicked open home screen");
                 }
-            } else
-            {
+            } else {
                 Log.i(FloraConstant.TAG, "guestValue = 0 open login screen");
                 Fragment loginFragment = new LoginFragment();
                 Navigator.loadFragment(this, loginFragment, R.id.fragment_container, false, "");
-              //  initLoginVisibility();
+                //  initLoginVisibility();
             }
         } else {
             setupBottomNavigationView();
         }
     } // onCreate
+
+    private void checkComeFrom() {
+        Intent intent = getIntent();
+        if (intent != null) {
+            coming = intent.getStringExtra("comeFrom");
+        }
+        Log.i(FloraConstant.TAG, "coming : " + coming);
+        if (coming != null)
+            if (coming.equals("login")) {
+                Log.i(FloraConstant.TAG, "coming login: " + coming);
+                Fragment loginFragment = new LoginFragment();
+                Navigator.loadFragment(MainActivity.this, loginFragment, R.id.fragment_container, false, "");
+            } else if (coming.equals("register")) {
+                Log.i(FloraConstant.TAG, "coming register: " + coming);
+                Fragment registerFragment = new RegisterFragment();
+                Navigator.loadFragment(MainActivity.this, registerFragment, R.id.fragment_container, false, "");
+            }
+    } // check come from
 
     private void initLanguage() {
 
@@ -162,8 +184,7 @@ public class MainActivity extends AppCompatActivity {
                         .setDefaultFontPath(FloraConstant.ENGLISH_FONT)
                         .setFontAttrId(R.attr.fontPath)
                         .build());
-            }
-            else if (LanguageSessionManager.getLang().equals("ar")) {
+            } else if (LanguageSessionManager.getLang().equals("ar")) {
                 Log.i(FloraConstant.TAG, "Apply arabic font in main ");
                 updateViews("ar");
                 isEnglish = false;
@@ -203,9 +224,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (LanguageSessionManager.getLang().equals("ar")) {
             typeface = Typeface.createFromAsset(act.getAssets(), FloraConstant.ARABIC_FONT);
-        }
-        else {
-            typeface  = Typeface.createFromAsset(act.getAssets(), FloraConstant.ENGLISH_FONT);
+        } else {
+            typeface = Typeface.createFromAsset(act.getAssets(), FloraConstant.ENGLISH_FONT);
 
         }
 
@@ -231,15 +251,15 @@ public class MainActivity extends AppCompatActivity {
 
         if (!SessionManager.isLoggedin()) {
             Log.i(FloraConstant.TAG, SessionManager.getGuestUserId() + "");
-           // MoreFragment.user_status.setText(act.getString( R.string.login));
-           // userStatus.setTitle(act.getString(R.string.login));
+            // MoreFragment.user_status.setText(act.getString( R.string.login));
+            // userStatus.setTitle(act.getString(R.string.login));
             Log.i(FloraConstant.TAG, "btn_status set login ");
 
             if (SessionManager.getGuestUserId().equalsIgnoreCase("0")) {
                 createCustomer();
             }
         } else {
-          //  MoreFragment.user_status.setText(act.getString( R.string.logout));
+            //  MoreFragment.user_status.setText(act.getString( R.string.logout));
             //userStatus.setTitle(getString(R.string.logout));
             Log.i(FloraConstant.TAG, "btn_status set logout ");
             Log.i(FloraConstant.TAG, "registerGuest else : " + SessionManager.getGuestUserId() + "");
@@ -256,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
                             @RequiresApi(api = Build.VERSION_CODES.M)
                             @Override
                             public void success(ShoppingCarts outResponse, Response response) {
-                              //  cart_count.setVisibility(View.GONE);
+                                //  cart_count.setVisibility(View.GONE);
                                 if (outResponse != null) {
 
                                     Log.i(FloraConstant.TAG, "not null");
@@ -266,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
                                     if (outResponse.getShoppingCarts().size() > 0) {
 
                                         addBadgeView();
-                                       // cart_count.setVisibility(View.VISIBLE);
+                                        // cart_count.setVisibility(View.VISIBLE);
                                         Log.i(FloraConstant.TAG, "shoppingCartItemsCount success : " +
                                                 outResponse.getShoppingCarts().size());
 
@@ -277,11 +297,9 @@ public class MainActivity extends AppCompatActivity {
                                         Log.i(FloraConstant.TAG, "shoppingCartItemsCount" +
                                                 " count in main : " + count);
                                         //cart_count.setText(count + "");
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         removeBadge();
-                                     //   cart_count.setVisibility(View.GONE);
+                                        //   cart_count.setVisibility(View.GONE);
                                     }
 
 
@@ -439,6 +457,7 @@ public class MainActivity extends AppCompatActivity {
                 linear_search.setBackground(getDrawable(R.drawable.search_bar));
                 img_logo.setVisibility(View.GONE);
                 img_filter.setVisibility(View.GONE);
+                img_sort.setVisibility(View.GONE);
                 img_sort.setVisibility(View.GONE);
             }
         });

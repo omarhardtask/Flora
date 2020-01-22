@@ -1,6 +1,7 @@
 package app.flora.Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,9 +19,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 
 import app.flora.Global.FloraConstant;
+import app.flora.Global.Navigator;
 import app.flora.Models.CategoriesModel;
 import app.flora.Models.OccasionsModel;
 import app.flora.R;
+import app.flora.Ui.Fragments.ProductsFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -66,17 +70,18 @@ public class OccasionsAdapter extends RecyclerView.Adapter<OccasionsAdapter.MyVi
         holder.tv_title.setText(list.get(position).getName());
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View .OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Bundle bundle = new Bundle();
-//                bundle.putString("product_id", String.valueOf(list.get(position).getProductId()));
-//                Log.i(hesabiConstant.TAG , "send product_id : " +
-//                        String.valueOf(list.get(position).getProductId()));
-//                productDetailsFragment productDetailsFragment = new productDetailsFragment();
-//                productDetailsFragment.setArguments(bundle);
-//                Navigator.loadFragment((FragmentActivity) context,
-//                        productDetailsFragment, R.id.fragment_container, true, "services");
+                Bundle bundle = new Bundle();
+                bundle.putString("ManufactureId", String.valueOf(list.get(position).getId()));
+                bundle.putString("comeFrom", "Occasions");
+                Log.i(FloraConstant.TAG , "send ManufactureId : " +
+                        String.valueOf(list.get(position).getId()));
+                ProductsFragment productDetailsFragment = new ProductsFragment();
+                productDetailsFragment.setArguments(bundle);
+                Navigator.loadFragment((FragmentActivity) context,
+                        productDetailsFragment, R.id.fragment_container, true, "services");
                   }
         }); // click an item
 

@@ -335,7 +335,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_6sdp"
                         android:layout_marginEnd="@dimen/_20sdp"
-                        android:drawablePadding="@dimen/_8sdp"
                         android:hint="@string/day"
                         android:clickable="true"
                         android:inputType="number"

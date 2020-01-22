@@ -147,6 +147,7 @@ public class EditProfileFragment extends Fragment {
 
                     @Override
                     public void failure(RetrofitError error) {
+                        btn_save.setClickable(true);
                         FixControl.showErrorMessage(error, getView());
                         mloading.setVisibility(View.GONE);
                         Log.d("RetrofitError", "failure");
@@ -180,6 +181,12 @@ public class EditProfileFragment extends Fragment {
         Navigator.loadFragment(getActivity(), changePasswordFragment, R.id.fragment_container, true, "");
     } // init changePassword
 
+    @OnClick(R.id.tv_birthday)
+    public void initBirthTextView() {
+        new DatePickerDialog(getActivity(), date, myCalendar
+                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+    } // initBirthday
 
     private void initEdit() {
         if (customer != null) {
@@ -194,7 +201,15 @@ public class EditProfileFragment extends Fragment {
             if (customer != null) {
                 et_first_name.setText(customer.getFirstName());
                 et_last_name.setText(customer.getLastName());
-                et_mobile.setText(customer.getLastName());
+                et_mobile.setText(customer.getPhone());
+
+                if (customer.getGender().equals("M")) {
+                    et_gender.setText(getActivity().getString(R.string.male));
+
+                } else if (customer.getGender().equals("F")) {
+                    et_gender.setText(getActivity().getString(R.string.female));
+
+                }
 
                 try {
                     String dtStart = customer.getDate_of_birth();
@@ -218,7 +233,7 @@ public class EditProfileFragment extends Fragment {
 
                     et_email.setText(customer.getEmail());
                 }
-                et_mobile.setText(customer.getUsername());
+                et_mobile.setText(customer.getPhone());
             }
         } catch (Exception e) {
         }

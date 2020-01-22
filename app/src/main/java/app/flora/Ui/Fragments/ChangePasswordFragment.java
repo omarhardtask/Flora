@@ -103,6 +103,8 @@ public class ChangePasswordFragment extends Fragment {
     private void changePassword() {
 
         mloading.setVisibility(View.VISIBLE);
+        FixControl.DisableLayout(coordinatorLayout);
+
         FloraApiCall.getCallingAPIInterface().changePassword(
                 languageSeassionManager.getLang(),
                 FloraConstant.AuthorizationToken,
@@ -132,10 +134,13 @@ public class ChangePasswordFragment extends Fragment {
                         } else {
                             Log.d("body", "null");
                         }
+                        FixControl.EnableLayout(coordinatorLayout);
+
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
+                        FixControl.EnableLayout(coordinatorLayout);
                         FixControl.showErrorMessage(error, coordinatorLayout);
                         mloading.setVisibility(View.GONE);
                         Log.d("RetrofitError", "failure");

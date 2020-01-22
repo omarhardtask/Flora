@@ -30,6 +30,7 @@ public class SessionManager {
     public static SharedPreferences.Editor editor;
     Context _context;
     int PRIVATE_MODE = 0;
+    public static final String KEY_LangId = "KEY_LangId";
 
 
     @SuppressLint("CommitPrefEdits")
@@ -78,6 +79,13 @@ public class SessionManager {
         return  pref.getString(Token,"");
     }
 //---------------------------------------------------------------------------------------------
+
+
+    public static void setKEY_LangId(String lang) {
+        editor.putString(KEY_LangId, lang);
+        editor.commit();
+    }
+
 
     public void setRecentlyViewArrayList(String token){
         editor.putString(RecentlyViewArrayList, token);

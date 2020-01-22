@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-    android:id="@+id/toolbar"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:elevation="@dimen/_5sdp"
@@ -99,22 +99,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                 android:orientation="horizontal"
+                android:visibility="visible"
+                android:layout_margin="@dimen/_2sdp"
+                android:padding="@dimen/_2sdp"
+                >
 
                 <SearchView
                     android:id="@+id/SearchView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:theme="@style/AppSearchView"
+                    android:searchHintIcon="@android:color/transparent"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
                     android:background="@null"
-                    android:gravity="end"
+                    android:textAlignment="center"
+                    android:gravity="end|center"
                     android:queryBackground="@null"
                     android:queryHint="@string/search_hint"
-                    android:searchIcon="@drawable/search_icon_black" />
+                    android:searchIcon="@drawable/search_icon_black"
+                    />
 
             </LinearLayout>
 

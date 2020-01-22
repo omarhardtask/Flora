@@ -29,8 +29,8 @@
         android:layout_gravity="center"
         android:text="Omaaaar"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textSize="12sp"
+        />
 
 
 </androidx.cardview.widget.CardView>

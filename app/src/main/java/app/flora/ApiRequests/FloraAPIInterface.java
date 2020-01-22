@@ -255,7 +255,6 @@ public interface FloraAPIInterface {
     void fetchProducts(@Header(FloraConstant.LanguageKey) String language_id,
                        @Header("Authorization") String auth_token,
                        @Query("customer_id") String user_id,
-                     //  @Query(value="vendor_name" , encodeValue = false) String vendor_name,
                        @Query("vendor_name") String vendor_name,
                        @Query("limit") String limit,
                        @Query("page") String page,
@@ -304,7 +303,13 @@ public interface FloraAPIInterface {
 
 //====================================================================================
 
-
+    @GET("/products")
+    void fetchOccasionsProducts(@Header(FloraConstant.LanguageKey) String language_id,
+                       @Header("Authorization") String auth_token,
+                       @Query("limit") String limit,
+                       @Query("page") String page,
+                       @Query("manufacturer_id") String manufacturer_id,
+                       Callback<GetProducts> getProductsCallback); // fetch products
 
 
 
