@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/_6sdp"
+    app:cardElevation="@dimen/_2sdp"
+    >
+
+    <ImageView
+        android:id="@+id/img_shop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/heart_sel_large" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/shops_cate_shadow" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text="Sweet Foods"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text="Sweet ND CONDf"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+       />
+
+    <com.willy.ratingbar.RotationRatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:srb_starPadding="@dimen/_1sdp"
+        android:elevation="@dimen/_8sdp"
+        app:srb_numStars="5"
+        app:srb_rating="3"
+        android:layout_margin="@dimen/_5sdp"
+        android:clickable="false"
+        app:srb_stepSize="0.5"
+        app:srb_isIndicator="false"
+        android:visibility="gone"
+        app:srb_clickable="false"
+        app:srb_scrollable="true"
+        app:srb_clearRatingEnabled="true"
+        app:srb_drawableEmpty="@drawable/star_unsel"
+        app:srb_drawableFilled="@drawable/star_sel"
+        style="@android:style/Widget.Holo.Light.RatingBar.Small"
+        />
+
+</androidx.cardview.widget.CardView>

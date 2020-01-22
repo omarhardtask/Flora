@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_3sdp"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/_6sdp"
+        app:cardElevation="@dimen/_2sdp">
+
+
+        <ImageView
+            android:id="@+id/img_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/featured_products_noimg"
+            android:scaleType="fitXY"
+            android:src="@drawable/lang_icon" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:src="@drawable/featured_products_shadow"
+            />
+
+
+        <ImageView
+            android:id="@+id/img_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_2sdp"
+            android:layout_margin="@dimen/_2sdp"
+            android:src="@drawable/heart_sel"
+            android:layout_gravity="end|bottom"
+            />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="@dimen/_90sdp"
+            android:lines="1"
+            android:layout_gravity="bottom|start"
+            android:padding="@dimen/_2sdp"
+            android:gravity="start"
+            android:background="@null"
+            android:text="dESCRIPTION"
+            android:textColor="@color/white"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:gravity="center"
+        android:background="@null"
+        android:text="Omaaaadsaadsadsadsr"
+        android:textColor="@color/toolbar_title"
+        android:textSize="15sp"
+      />
+</LinearLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Ui.Fragments.FilterFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_bouquet_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_9sdp"
+            android:text="@string/bouquet_type"
+            android:textColor="@color/date"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bouquet_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_bouquet_type"
+            android:layout_margin="@dimen/_9sdp"
+            tools:listitem="@layout/bouquet_type_item" />
+
+        <TextView
+            android:id="@+id/tv_flower_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rv_bouquet_type"
+            android:layout_margin="@dimen/_9sdp"
+            android:text="@string/flower_type"
+            android:textColor="@color/date"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_flower_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_flower_type"
+            android:layout_margin="@dimen/_9sdp"
+            tools:listitem="@layout/bouquet_type_item" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rv_flower_type"
+            android:layout_margin="@dimen/_9sdp"
+            android:text="@string/price"
+            android:textColor="@color/date"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_price"
+            android:layout_margin="@dimen/_9sdp"
+            tools:listitem="@layout/bouquet_type_item" />
+
+        <TextView
+            android:id="@+id/tv_occasion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rv_price"
+            android:layout_margin="@dimen/_9sdp"
+            android:text="@string/Occasions"
+            android:textColor="@color/date"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_occassion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_occasion"
+            android:layout_margin="@dimen/_9sdp"
+            tools:listitem="@layout/bouquet_type_item" />
+
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

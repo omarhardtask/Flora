@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#D8AD45</color>
+    <color name="colorPrimaryDark">#D8AD45</color>
+    <color name="colorAccent">#D8AD45</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="bottom_unselected">#BDBDBD</color>
+    <color name="toolbar_title">#212121</color>
+    <color name="occasion_title">#535353</color>
+    <color name="hint">#757575</color>
+    <color name="forget_txt">#545454</color>
+    <color name="line">#E5E5E5</color>
+    <color name="home_txt">#252525</color>
+    <color name="register_txt">#8F8F8F</color>
+    <color name="sort_by_title">#111111</color>
+    <color name="date">#878787</color>
+    <color name="subtotal_txt">#505050</color>
+    <color name="green">#89C841</color>
+    <color name="Completed">#00a65a</color>
+    <color name="Processed">#00c0ef </color>
+    <color name="Pending">#f39c12</color>
+    <color name="Cancelled">#dd4b39</color>
+    <color name="red">#D50707</color>
+    <color name="round_background">#EAEAEA</color>
+
+
+
+</resources>

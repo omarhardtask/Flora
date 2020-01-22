@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Ui.Fragments.MoreFragment"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rel_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/edit_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/user_icon" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/edit_icon"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/EditProfile"
+                android:textColor="@color/toolbar_title" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/edit_icon"
+                android:background="@color/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_addresses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_edit_profile"
+            >
+
+            <ImageView
+                android:id="@+id/address_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/addresses_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/address_icon"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/Addresses"
+                android:textColor="@color/toolbar_title" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/address_icon"
+                android:background="@color/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_orders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_addresses"
+            >
+
+            <ImageView
+                android:id="@+id/orders_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/orders_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/orders_icon"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/Orders"
+                android:textColor="@color/toolbar_title" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/orders_icon"
+                android:background="@color/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_whishlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_orders"
+            >
+
+            <ImageView
+                android:id="@+id/whishlist_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/wishlist_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/whishlist_icon"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/WhishList"
+                android:textColor="@color/toolbar_title" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/whishlist_icon"
+                android:background="@color/line" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rel_payment_method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_whishlist"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/payment_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/payment_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/payment_icon"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/PaymentMethods"
+                android:textColor="@color/toolbar_title" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/payment_icon"
+                android:background="@color/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_payment_method"
+            >
+
+            <ImageView
+                android:id="@+id/about_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/about_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/about_icon"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/About"
+                android:textColor="@color/toolbar_title" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/about_icon"
+                android:background="@color/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_about"
+            >
+
+            <ImageView
+                android:id="@+id/logout_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/logout_icon" />
+
+            <TextView
+                android:id="@+id/user_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/logout_icon"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/Logout"
+                android:textColor="@color/toolbar_title" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/logout_icon"
+                android:background="@color/line" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_logout"
+            >
+
+            <ImageView
+                android:id="@+id/lang_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/lang_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/lang_icon"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/language"
+                android:textColor="@color/toolbar_title" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/lang_icon"
+                android:background="@color/line" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

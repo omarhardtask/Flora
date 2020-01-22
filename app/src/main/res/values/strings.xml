@@ -1,0 +1,239 @@
+<resources>
+    <string name="app_name">Flora</string>
+    <string name="search_hint">Search...</string>
+    <string name="search_for">Search For : </string>
+    <string name="search">Search</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="forget_password">Forget Password ? </string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="register">Register</string>
+    <string name="gender">Gender</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mobile">Mobile Number</string>
+    <string name="birthday">Birthday</string>
+    <string name="accept_terms">I agree for <font color='#D8AD45'>Terms &amp; Conditions</font></string>
+    <string name="DoneLabel">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="SelectLabel">Select</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="language">عربي</string>
+    <string name="day">Day</string>
+    <string name="date">Date</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="ResetPasswordLabel">Reset Password</string>
+    <string name="Home">Home</string>
+    <string name="Occasions">Occasions</string>
+    <string name="Filter">Filter</string>
+    <string name="Reviews">Reviews</string>
+    <string name="Shops">Shops</string>
+    <string name="Cart">Cart</string>
+    <string name="More">More</string>
+    <string name="Featured_Shops">Featured Shops</string>
+    <string name="Featured_Products">Featured Products</string>
+    <string name="Shops_Categories">Shop Categories</string>
+    <string name="Sort_By">Sort By</string>
+    <string name="submit">Submit</string>
+    <string name="price">Price</string>
+    <string name="title">Title</string>
+    <string name="choose">Please select sort by</string>
+    <string name="subtotal">Subtotal : </string>
+    <string name="delivery_charges">Delivery Charges : </string>
+    <string name="total">Total : </string>
+    <string name="checkout">Checkout</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="bouquet_type">Bouquet Type</string>
+    <string name="flower_type">Flower Type</string>
+    <string name="WhishList">WhishList</string>
+    <string name="EditProfile">Edit Profile</string>
+    <string name="Addresses">Addresses</string>
+    <string name="Orders">Orders</string>
+    <string name="PaymentMethods">Payment Methods</string>
+    <string name="About">About Flora</string>
+    <string name="Terms">Terms</string>
+    <string name="Logout">Logout</string>
+    <string name="Save">Save</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+    <string name="ProductDetails">Product Details</string>
+    <string name="register_success">Register successfully</string>
+    <string name="email_empty">Email can\'t be Empty</string>
+    <string name="cant_empty">can\'t be Empty</string>
+    <string name="mobile_empty">Mobile can\'t be Empty</string>
+    <string name="password_empty">Password can\'t be Empty</string>
+    <string name="confirm_password_empty">Confirm Password can\'t be Empty</string>
+    <string name="EmailIsWrongLabel">Sorry, This Email is incorrect.</string>
+    <string name="password_limit">Password should contain at least 6 characters</string>
+    <string name="MustAgreeFirst">You should agree first on terms and conditions</string>
+    <string name="confirm_validation">Confirm Password should be same</string>
+    <string name="save">Save</string>
+    <string name="Confirm">Confirm</string>
+    <string name="AreYouSureYouWantToLogoutLabel">Are you sure you want to logout ?</string>
+    <string name="login_guest">Log in as a guest</string>
+    <string name="login_sccess">Login success</string>
+    <string name="password_sent">Your password has been successfully sent on email.</string>
+    <string name="FillAllFields">Please Fill all fields</string>
+    <string name="address_empty">Addresses is empty now</string>
+    <string name="add_address">Add Address</string>
+    <string name="payment">Payment Methods</string>
+    <string name="DeleteAddressLabel">Are you sure you want to delete address ?</string>
+    <string name="CartEmptyNowLabel">Cart is empty now</string>
+    <string name="SuccessPage">flora.</string>
+    <string name="ErrorPage">error.aspx</string>
+    <string name="OperationFailed">Operation Failed</string>
+    <string name="order_details">Order Details</string>
+    <string name="ReTryMessage">This order is not yet paid for. To pay now, click the "Retry payment" button.</string>
+    <string name="refund">Refund</string>
+    <string name="invoice">Invoice</string>
+    <string name="reorder">Reorder</string>
+    <string name="complain">Complain</string>
+    <string name="Quantity">Quantity</string>
+    <string name="SubTotalLabel">Subtotal</string>
+    <string name="PaymentMethodLabel">Payment Method :</string>
+    <string name="PaymentLabel">Payment</string>
+    <string name="CountryLabel">Country</string>
+    <string name="PaymentStatus">Payment Status :</string>
+    <string name="StateLabel">State</string>
+    <string name="ProductsLabel1">Product(s)</string>
+    <string name="BillingAddress">Billing Address</string>
+    <string name="name">Name</string>
+    <string name="OrdersTotalLabel">Order total</string>
+    <string name="OrdersStatusLabel">Order status</string>
+    <string name="OrdersDateLabel">Order date</string>
+    <string name="Order">Order</string>
+    <string name="order_done">Your order has been processed successfully. Please contact concerned merchants to enjoy the service and redeem coupons.</string>
+    <string name="empty">empty now</string>
+    <string name="city">City</string>
+    <string name="address_title">Address title</string>
+    <string name="area">Area</string>
+    <string name="street">Street</string>
+    <string name="block">Block</string>
+    <string name="address_details">Extra details</string>
+    <string name="Edit">Edit</string>
+    <string name="choose_country">Please Select Country First</string>
+    <string name="address_success">Address added successfully</string>
+    <string name="address_edited">Address has been updated successfully</string>
+    <string name="FieldMissing">Please Fill All fields</string>
+    <string name="change_password">Change Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="ConfirmPasswordShouldBeSame">Confirm Password should be same</string>
+    <string name="PassworduUpdated">Your password has been updated successfully</string>
+    <string name="login_first">Please login first</string>
+    <string name="EditDone">Thanks, Your profile has been edited successfully.</string>
+    <string name="try_again">Fail , Please try again</string>
+    <string name="order_empty">Orders is empty now</string>
+    <string name="occasion_empty">Occasions is empty now</string>
+    <string name="shops_empty">Shops is empty now</string>
+    <string name="feature_shops_empty">Feature Shops is empty now</string>
+    <string name="ShoppingCartMessageLabel">Your Shopping Cart is empty!</string>
+    <string name="WishListEmptyNowLabel">Favourite is empty now</string>
+    <string name="DeleteCartLabel">Are you sure you want to delete ?</string>
+    <string name="MaximumQuantityAllowedLabel">The maximum quantity allowed for purchase is aaa.</string>
+    <string name="products_empty">Products is empty now</string>
+    <string name="products">Products</string>
+    <string name="select_date">Select Date</string>
+    <string name="ProductAddedLabel">Product successfully added to cart</string>
+    <string name="ProductAddedWishlistLabel">The product has been added to your Wishlist</string>
+    <string name="DataMissing1">Please select below required fields.</string>
+    <string name="ContinueShopping">Continue Shopping</string>
+    <string name="same_day_delivery">Same Day Delivery</string>
+    <string name="after_2_days">After 2 days</string>
+    <string name="after_3_days">After 3 days</string>
+    <string name="after_4_days">After 4 days</string>
+
+
+</resources>

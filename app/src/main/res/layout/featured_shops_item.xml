@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_3sdp"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/_6sdp"
+        app:cardElevation="@dimen/_2sdp"
+        android:background="@drawable/featured_shops_noimg"
+        >
+
+
+        <ImageView
+            android:id="@+id/img_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/map_noimg"
+            android:scaleType="fitXY"
+            android:src="@drawable/lang_icon" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@null"
+        android:layout_gravity="center"
+        android:textColor="@color/toolbar_title"
+        android:textSize="15sp"
+       />
+
+</LinearLayout>

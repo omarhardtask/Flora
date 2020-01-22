@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white">
+
+    <ScrollView
+        android:layout_above="@+id/linear_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/tv_order_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="10dp"
+                android:layout_alignParentStart="true"
+                />
+
+            <TextView
+                android:id="@+id/tv_temp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dedede"
+                android:layout_below="@+id/tv_order_details"
+                android:layout_marginTop="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/my_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_temp"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false"/>
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/my_recycler_view"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                style="@style/TextAppearance.AppCompat.Medium"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/linear_bottom"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/_20sdp"
+        android:layout_alignParentBottom="true"
+        >
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ReTryMessage"
+            android:paddingTop="0dp"
+            android:paddingBottom="5dp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            >
+
+            <LinearLayout
+                android:id="@+id/linear_refund"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/refund_icon"
+                    android:tint="@color/colorPrimary"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_refund"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/refund"
+                    android:textColor="@color/date"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_invoice"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/invoice_icon"
+                    android:tint="@color/colorPrimary"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_invoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/invoice"
+                    android:textColor="@color/date"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_re_order"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/reorder_icon"
+                    android:tint="@color/colorPrimary"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_reorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reorder"
+                    android:textColor="@color/date"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/linear_complain"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/complain_icon"
+                    android:tint="@color/colorPrimary"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_complain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/complain"
+                    android:textColor="@color/date"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/linear_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cancel_icon"
+                android:tint="@color/colorPrimary"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"
+                    android:textColor="@color/date"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal"
+        android:indeterminateDrawable="@drawable/custom_progress_bar"
+        android:visibility="gone" />
+
+</RelativeLayout>
