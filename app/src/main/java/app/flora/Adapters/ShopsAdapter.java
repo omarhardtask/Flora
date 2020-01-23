@@ -1,6 +1,7 @@
 package app.flora.Adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import com.willy.ratingbar.ScaleRatingBar;
 import java.util.ArrayList;
 
 import app.flora.Global.FloraConstant;
+import app.flora.Global.LanguageSessionManager;
 import app.flora.Global.Navigator;
 import app.flora.Models.CategoriesModel;
 import app.flora.Models.FeaturedShopsModel;
@@ -70,7 +72,21 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopsAdapter.MyViewHolder
 
         }
 
-        Log.i(FloraConstant.TAG, "getTitle  : " + list.get(position).getLocalizedName());
+
+        if (LanguageSessionManager.getLang().equals("en"))
+        {
+            holder.tv_title.setTypeface(Typeface.createFromAsset(context.getAssets(), FloraConstant.
+                    ENGLISH_BOLD));
+
+
+        }
+        else if (LanguageSessionManager.getLang().equals("ar")) {
+            holder.tv_title.setTypeface(Typeface.createFromAsset(context.getAssets(), FloraConstant.
+                    ARABIC_BOLD));
+        }
+
+
+            Log.i(FloraConstant.TAG, "getTitle  : " + list.get(position).getLocalizedName());
 
         holder.tv_title.setText(list.get(position).getLocalizedName());
         holder.tv_desc.setText(list.get(position).getLocalized_descriptions().get(0).getLocalized_description());

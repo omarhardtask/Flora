@@ -124,6 +124,7 @@ public class AddAddressFragment extends Fragment {
 
             if (getArguments().containsKey("isEdit")) {
                 isEdit = getArguments().getBoolean("isEdit");
+                btn_add_address.setText(act.getString(R.string.Edit));
             }
             if (getArguments().containsKey("Address")) {
                 address = gson.fromJson(getArguments().getString("Address"),

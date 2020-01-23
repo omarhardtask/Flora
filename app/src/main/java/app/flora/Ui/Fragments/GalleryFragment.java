@@ -78,7 +78,7 @@ public class GalleryFragment extends Fragment {
         ((MainActivity) getActivity()).img_add.setVisibility(View.GONE);
         ((MainActivity) getActivity()).img_filter.setVisibility(View.GONE);
         ((MainActivity) getActivity()).img_logo.setVisibility(View.VISIBLE);
-        ((MainActivity) getActivity()).linear_search.setVisibility(View.VISIBLE);
+        ((MainActivity) getActivity()).linear_search.setVisibility(View.generateViewId());
         ((MainActivity) getActivity()).toolbar.setVisibility(View.GONE);
         ((MainActivity) getActivity()).bottomNavigationView.setVisibility(View.GONE);
     } // initialize visibiliy

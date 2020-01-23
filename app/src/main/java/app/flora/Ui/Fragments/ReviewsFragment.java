@@ -61,7 +61,7 @@ public class ReviewsFragment extends Fragment {
         ((MainActivity) getActivity()).img_filter.setVisibility(View.GONE);
         ((MainActivity) getActivity()).img_logo.setVisibility(View.VISIBLE);
         ((MainActivity) getActivity()).img_add.setVisibility(View.GONE);
-        ((MainActivity) getActivity()).linear_search.setVisibility(View.VISIBLE);
+        ((MainActivity) getActivity()).linear_search.setVisibility(View.GONE);
         ((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
         ((MainActivity) getActivity()).bottomNavigationView.setVisibility(View.VISIBLE);
     } // initialize visibiliy

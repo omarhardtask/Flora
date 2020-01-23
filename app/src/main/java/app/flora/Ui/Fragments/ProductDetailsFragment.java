@@ -4,6 +4,7 @@ package app.flora.Ui.Fragments;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -76,6 +77,10 @@ public class ProductDetailsFragment extends Fragment {
     @BindView(R.id.tv_price)
     TextView tv_price;
 
+    @BindView(R.id.tv_delivery)
+    TextView tv_delivery;
+
+
     @BindView(R.id.fab)
     FloatingActionButton fab;
 
@@ -104,7 +109,7 @@ public class ProductDetailsFragment extends Fragment {
     boolean added;
     ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
     int quantity = 1, NUM_PAGES = 0, currentPage = 0;
-    String s = "";
+    String s = "", delivery_text = "";
     Timer swipeTimer;
 
 
@@ -114,9 +119,26 @@ public class ProductDetailsFragment extends Fragment {
         ButterKnife.bind(this, view);
         initVisibility();
         initAct();
+        initBold();
         getProductObject();
         initDefaultQuantity();
         return view;
+    }
+
+    private void initBold() {
+        if (LanguageSessionManager.getLang().equals("en"))
+        {
+            tv_delivery.setTypeface(Typeface.createFromAsset(act.getAssets(), FloraConstant.
+                    ENGLISH_BOLD));
+
+
+        }
+        else if (LanguageSessionManager.getLang().equals("ar"))
+        {
+            tv_delivery.setTypeface(Typeface.createFromAsset(act.getAssets(), FloraConstant.
+                    ARABIC_BOLD));
+
+        }
     }
 
     private void setupSlider() {
@@ -401,7 +423,7 @@ public class ProductDetailsFragment extends Fragment {
         ((MainActivity) getActivity()).img_sort.setVisibility(View.GONE);
         ((MainActivity) getActivity()).img_filter.setVisibility(View.GONE);
         ((MainActivity) getActivity()).img_logo.setVisibility(View.VISIBLE);
-        ((MainActivity) getActivity()).linear_search.setVisibility(View.VISIBLE);
+        ((MainActivity) getActivity()).linear_search.setVisibility(View.GONE);
         ((MainActivity) getActivity()).img_add.setVisibility(View.GONE);
         ((MainActivity) getActivity()).toolbar.setVisibility(View.VISIBLE);
         ((MainActivity) getActivity()).bottomNavigationView.setVisibility(View.VISIBLE);
@@ -441,6 +463,30 @@ public class ProductDetailsFragment extends Fragment {
 //                .error(R.drawable.product_details_noimg)
 //                .into(img_item);
 
+
+        if (product.getDelivery_date_id().equals("0")) {
+            delivery_text = getString(R.string.same_day_delivery);
+
+        }
+        if (product.getDelivery_date_id().equals(null)) {
+            delivery_text = getString(R.string.same_day_delivery);
+
+        } else if (product.getDelivery_date_id().equals("1")) {
+            delivery_text = getString(R.string.same_day_delivery);
+
+        } else if (product.getDelivery_date_id().equals("2")) {
+            delivery_text = getString(R.string.after_2_days);
+
+        } else if (product.getDelivery_date_id().equals("3")) {
+            delivery_text = getString(R.string.after_3_days);
+
+        } else if (product.getDelivery_date_id().equals("4")) {
+            delivery_text = getString(R.string.after_4_days);
+
+        }
+
+
+        tv_delivery.setText( "( " + delivery_text + " )");
 
         tv_title.setText(product.getLocalizedName());
         tv_desc.setText(product.getLocalizedShortDescription());

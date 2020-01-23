@@ -67,7 +67,7 @@ public class OccasionsAdapter extends RecyclerView.Adapter<OccasionsAdapter.MyVi
         Log.i(FloraConstant.TAG, "getTitle  : " +
                 list.get(position).getName());
 
-        holder.tv_title.setText(list.get(position).getName());
+        holder.tv_title.setText(list.get(position).getLocalized_names().get(0).getLocalized_name());
 
 
         holder.itemView.setOnClickListener(new View .OnClickListener() {

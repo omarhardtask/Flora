@@ -2,11 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="60dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/img_cat_product"
@@ -24,6 +25,9 @@
         android:id="@+id/tv_cat_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Omaaar"
+        android:ellipsize="end"
+        android:maxWidth="@dimen/_60sdp"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:maxLines="1"

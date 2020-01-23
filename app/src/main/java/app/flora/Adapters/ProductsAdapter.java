@@ -84,7 +84,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
         );
 
 
-        if (list.get(position).getDelivery_date_id().equals("0")) {
+        if (list.get(position).getDelivery_date_id().equals("0")
+                || list.get(position).getDelivery_date_id().equals(null) )
+        {
             holder.tv_desc.setText(context.getString(R.string.same_day_delivery));
 
         } else if (list.get(position).getDelivery_date_id().equals("1")) {

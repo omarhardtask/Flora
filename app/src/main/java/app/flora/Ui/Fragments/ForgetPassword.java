@@ -62,6 +62,7 @@ public class ForgetPassword extends Fragment {
         ((MainActivity) getActivity()).img_back.setVisibility(View.GONE);
         ((MainActivity) getActivity()).toolbar.setVisibility(View.GONE);
         ((MainActivity) getActivity()).img_add.setVisibility(View.GONE);
+        ((MainActivity) getActivity()).linear_search.setVisibility(View.GONE);
         ((MainActivity) getActivity()).bottomNavigationView.setVisibility(View.GONE);
         ((MainActivity) getActivity()).img_back.setVisibility(View.VISIBLE);
     } // initialize visibiliy

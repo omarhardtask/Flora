@@ -7,8 +7,7 @@
     android:layout_margin="@dimen/_4sdp"
     android:orientation="vertical"
     app:cardCornerRadius="@dimen/_6sdp"
-    app:cardElevation="@dimen/_2sdp"
-    >
+    app:cardElevation="@dimen/_2sdp">
 
     <ImageView
         android:id="@+id/img_shop"
@@ -30,12 +29,10 @@
         android:layout_gravity="start|bottom"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
         android:ellipsize="end"
         android:lines="1"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tv_desc"
@@ -49,28 +46,27 @@
         android:lines="1"
         android:textColor="@color/white"
         android:textSize="13sp"
-       />
+        android:visibility="gone" />
 
     <com.willy.ratingbar.RotationRatingBar
         android:id="@+id/rating_bar"
+        style="@android:style/Widget.Holo.Light.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        app:srb_starPadding="@dimen/_1sdp"
-        android:elevation="@dimen/_8sdp"
-        app:srb_numStars="5"
-        app:srb_rating="3"
         android:layout_margin="@dimen/_5sdp"
         android:clickable="false"
-        app:srb_stepSize="0.5"
-        app:srb_isIndicator="false"
+        android:elevation="@dimen/_8sdp"
         android:visibility="gone"
-        app:srb_clickable="false"
-        app:srb_scrollable="true"
         app:srb_clearRatingEnabled="true"
+        app:srb_clickable="false"
         app:srb_drawableEmpty="@drawable/star_unsel"
         app:srb_drawableFilled="@drawable/star_sel"
-        style="@android:style/Widget.Holo.Light.RatingBar.Small"
-        />
+        app:srb_isIndicator="false"
+        app:srb_numStars="5"
+        app:srb_rating="3"
+        app:srb_scrollable="true"
+        app:srb_starPadding="@dimen/_1sdp"
+        app:srb_stepSize="0.5" />
 
 </androidx.cardview.widget.CardView>

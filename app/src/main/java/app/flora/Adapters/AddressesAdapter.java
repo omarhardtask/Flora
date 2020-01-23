@@ -2,6 +2,7 @@ package app.flora.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +54,22 @@ public class AddressesAdapter extends RecyclerView.Adapter<AddressesAdapter.MyVi
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
+        holder.imd_delete.setVisibility(View.GONE);
+        holder.img_edit.setVisibility(View.GONE);
+
+        if (comingFrom.equalsIgnoreCase("cart")) {
+
+            if (list.get(position).isSelected()) {
+                holder.tv_title.setTextColor(Color.parseColor("#4d7dd3"));
+
+            }
+        }
+        else {
+            holder.imd_delete.setVisibility(View.VISIBLE);
+            holder.img_edit.setVisibility(View.VISIBLE);
+        }
+
 
         holder.tv_title.setText(list.get(position).getFirstName() +
                 " " + list.get(position).getLastName());
