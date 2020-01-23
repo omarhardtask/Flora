@@ -99,7 +99,7 @@ public class OrdersDetailsFragment extends Fragment {
     SessionManager mSessionManager;
     LanguageSessionManager languageSeassionManager;
     String orderId = "";
-    OrderDelete.OrdersBean  order = null;
+    OrderDelete.OrdersBean order = null;
     RecyclerView.Adapter adapter;
     LinearLayoutManager mLayoutManager;
     static FragmentActivity act;

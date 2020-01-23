@@ -51,7 +51,6 @@
         android:layout_marginBottom="@dimen/_3sdp"
         android:maxWidth="@dimen/_150sdp"
         android:maxLines="3"
-        android:text="Omar \n asdnikm"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/tv_price"
         app:layout_constraintStart_toEndOf="@+id/img_card"
@@ -62,7 +61,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/_4sdp"
-        android:text="1.31500 (Kwd)"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_name" />
@@ -99,8 +97,7 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/card_decrease"
         app:layout_constraintEnd_toStartOf="@+id/card_increase"
-        app:layout_constraintTop_toTopOf="@+id/card_decrease"
-        />
+        app:layout_constraintTop_toTopOf="@+id/card_decrease" />
 
 
     <androidx.cardview.widget.CardView

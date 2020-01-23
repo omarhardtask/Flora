@@ -23,7 +23,6 @@
             android:ellipsize="end"
             android:maxWidth="@dimen/_250sdp"
             android:maxLines="2"
-            android:text="Product Namess"
             android:textColor="@color/toolbar_title"
             android:textStyle="bold" />
 
@@ -35,7 +34,6 @@
             android:layout_margin="@dimen/text_margin"
             android:ellipsize="end"
             android:maxWidth="@dimen/_250sdp"
-            android:text="Product desc"
             android:textColor="@color/toolbar_title" />
 
         <RelativeLayout
@@ -52,7 +50,6 @@
                 android:layout_margin="@dimen/_8sdp"
                 android:ellipsize="end"
                 android:maxWidth="@dimen/_250sdp"
-                android:text="100 KWD"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
@@ -112,10 +109,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rel_price"
-            tools:listitem="@layout/row_attribute"
-            android:padding="@dimen/_5sdp"
             android:nestedScrollingEnabled="false"
-
+            android:padding="@dimen/_5sdp"
+            tools:listitem="@layout/row_attribute"
             />
 
     </RelativeLayout>

@@ -96,7 +96,7 @@ public interface FloraAPIInterface {
 
 //====================================================================================
 
-    @POST("/orders")
+    @POST("/orders?fields=id,created_on_utc,customer_currency_code,order_status,order_total")
     void createOrders(@Header(FloraConstant.LanguageKey) String language_id,
                       @Header("Authorization") String Authorization,
                       @Header("Content-Type") String content_type,

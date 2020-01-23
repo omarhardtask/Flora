@@ -1,47 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".Ui.Fragments.OccasionsFragment">
 
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/rv"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       tools:listitem="@layout/feature_products_item_fragment"
-       android:visibility="visible"
-       app:spanCount="2"
-       app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-      android:layout_margin="@dimen/_15sdp"
-       />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/feature_products_item_fragment" />
 
 
-   <TextView
-       android:id="@+id/tv_msg"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       app:layout_constraintTop_toTopOf="parent"
-       android:textColor="@color/colorPrimary"
-       android:textStyle="bold"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintBottom_toBottomOf="parent"
-       style="@style/TextAppearance.AppCompat.Medium"
-       android:layout_gravity="center"
-       />
+    <TextView
+        android:id="@+id/tv_msg"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-   <ProgressBar
-       android:id="@+id/loading_progress"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:elevation="@dimen/_500sdp"
-       android:indeterminateDrawable="@drawable/custom_progress_bar"
-       android:visibility="gone"
-       android:layout_gravity="center"
-       />
+    <ProgressBar
+        android:id="@+id/loading_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:elevation="@dimen/_500sdp"
+        android:indeterminateDrawable="@drawable/custom_progress_bar"
+        android:visibility="gone" />
 
 </FrameLayout>

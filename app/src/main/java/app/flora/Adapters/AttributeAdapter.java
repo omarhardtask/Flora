@@ -107,6 +107,9 @@ public class AttributeAdapter extends RecyclerView.Adapter<AttributeAdapter.View
                 ProductDetailsFragment.attributes.get(position).setAttribute_values(textBoxValues);
                 viewHolder.tv_title.setVisibility(View.VISIBLE);
                 viewHolder.tv_title.setFocusable(false);
+
+
+                viewHolder.tv_title.setBackground(act.getDrawable(R.drawable.border_text));
                 viewHolder.tv_title.setText(R.string.select_date);
 
                 viewHolder.tv_title.setOnClickListener(new View.OnClickListener() {

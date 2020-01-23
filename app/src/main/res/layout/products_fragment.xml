@@ -12,37 +12,34 @@
         android:id="@+id/loading_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:elevation="@dimen/_500sdp"
         android:indeterminateDrawable="@drawable/custom_progress_bar"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
-        />
+        android:visibility="gone" />
 
     <ProgressBar
         android:id="@+id/loading_progress_products"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:elevation="@dimen/_500sdp"
         android:indeterminateDrawable="@drawable/custom_progress_bar"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
-        />
+        android:visibility="gone" />
 
 
     <TextView
         android:id="@+id/tv_msg"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_centerInParent="true"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        style="@style/TextAppearance.AppCompat.Medium"
         android:visibility="gone"
-        android:layout_centerInParent="true"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -53,8 +50,7 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/category_product_item"
-        />
+        tools:listitem="@layout/category_product_item" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -73,30 +69,28 @@
         android:id="@+id/review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/_10sdp"
-        android:elevation="@dimen/_10sdp"
-        android:background="@drawable/circle_background"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        >
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/circle_background"
+        android:elevation="@dimen/_10sdp"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/reviews_icon"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_gravity="center"
-            />
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/reviews_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
             android:layout_gravity="center_horizontal"
-            android:text="@string/Reviews"
             android:gravity="center"
+            android:text="@string/Reviews"
             android:textColor="@color/white"
+            android:textSize="10sp"
 
             />
     </LinearLayout>

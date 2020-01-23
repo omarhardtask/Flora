@@ -51,7 +51,6 @@
                 android:gravity="center"
                 android:lines="1"
                 android:maxWidth="@dimen/_150sdp"
-                android:text="Home Screen"
                 android:textColor="@color/toolbar_title"
                 android:textSize="15sp" />
 

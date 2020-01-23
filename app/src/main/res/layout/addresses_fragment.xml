@@ -1,65 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    android:id="@+id/layout"
     tools:context=".Ui.Fragments.OccasionsFragment">
 
-   <Button
-       android:id="@+id/btn_add_address"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginStart="@dimen/_20sdp"
-       android:layout_marginTop="@dimen/_25sdp"
-       android:layout_marginEnd="@dimen/_20sdp"
-       android:background="@drawable/rounded_rectangle"
-       android:backgroundTint="@color/colorPrimary"
-       android:clickable="true"
-       android:foreground="?attr/selectableItemBackgroundBorderless"
-       android:text="@string/add_address"
-       android:textAllCaps="false"
-       android:textColor="@color/white"
-       android:visibility="gone"
+    <Button
+        android:id="@+id/btn_add_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/colorPrimary"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:text="@string/add_address"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:visibility="gone"
 
-       />
+        />
 
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/rv_addresses"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       tools:listitem="@layout/address_item"
-       android:visibility="visible"
-       android:layout_below="@+id/btn_add_address"
-       />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_addresses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_add_address"
+        android:visibility="visible"
+        tools:listitem="@layout/address_item" />
 
-   <TextView
-       android:id="@+id/tv_msg"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       app:layout_constraintTop_toTopOf="parent"
-       android:textColor="@color/colorPrimary"
-       android:textStyle="bold"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintBottom_toBottomOf="parent"
-       style="@style/TextAppearance.AppCompat.Medium"
-       android:visibility="visible"
-       android:layout_gravity="center"
-       android:layout_centerInParent="true"
-       />
+    <TextView
+        android:id="@+id/tv_msg"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-   <ProgressBar
-       android:id="@+id/loading_progress"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:elevation="@dimen/_500sdp"
-       android:indeterminateDrawable="@drawable/custom_progress_bar"
-       android:visibility="gone"
-       android:layout_centerInParent="true"
-       />
+    <ProgressBar
+        android:id="@+id/loading_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:elevation="@dimen/_500sdp"
+        android:indeterminateDrawable="@drawable/custom_progress_bar"
+        android:visibility="gone" />
 
 </RelativeLayout>

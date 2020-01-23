@@ -56,11 +56,6 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-
-        try {
-
-        }catch (Exception e){}
-
         holder.tv_order_number.setText("#"  + String.valueOf(list.get(position).getId()));
         holder.tv_order_date.setText(  FixControl.convertDateToString( list.get(position).getCreated_on_utc()));
       // holder.tv_title.setText(list.get(position).getBilling_address().getAddress1());

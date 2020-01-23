@@ -24,7 +24,6 @@
         android:id="@+id/tv_cat_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="namee"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:maxLines="1"

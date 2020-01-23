@@ -14,6 +14,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.request.target.Target;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -55,8 +57,9 @@ public class FeaturedShopsAdapter extends RecyclerView.Adapter<FeaturedShopsAdap
             try {
                 Glide.with(context)
                         .load(list.get(position).getImage().getSrc())
-                        .placeholder(R.drawable.cate_noimg)
                         .error(R.drawable.cate_noimg)
+                        .format(DecodeFormat.PREFER_ARGB_8888)
+                        .override(Target.SIZE_ORIGINAL)
                         .into(holder.img_item);
             } catch (Exception e) {
                 Log.i(FloraConstant.TAG, "CategoryAdapterImage Exception : " + e.getMessage());

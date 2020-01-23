@@ -36,7 +36,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:text="#4556"
                 android:textColor="@color/date" />
 
 
@@ -45,7 +44,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="@string/date"
                 android:textColor="@color/date" />
 
             <TextView
@@ -71,7 +69,6 @@
                 android:ellipsize="end"
                 android:maxWidth="@dimen/_180sdp"
                 android:maxLines="1"
-                android:text="city"
                 android:textColor="@color/subtotal_txt" />
 
 
@@ -83,7 +80,6 @@
                 android:layout_marginTop="@dimen/_3sdp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="completed"
                 android:textColor="@color/colorPrimary" />
 
             <TextView
@@ -94,7 +90,6 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_alignParentBottom="true"
-                android:text="price"
                 android:textColor="@color/colorPrimary" />
 
         </RelativeLayout>

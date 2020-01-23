@@ -33,7 +33,6 @@
         android:layout_marginBottom="@dimen/_20sdp"
         android:ellipsize="end"
         android:lines="1"
-        android:text="Sweet Foods"
         android:textColor="@color/white"
         android:textSize="15sp"
         />
@@ -48,7 +47,6 @@
         android:layout_marginBottom="@dimen/_5sdp"
         android:ellipsize="end"
         android:lines="1"
-        android:text="Sweet ND CONDf"
         android:textColor="@color/white"
         android:textSize="13sp"
        />

@@ -24,8 +24,8 @@ public class OrderDelete {
         private int currency_rate;
         private int customer_tax_display_type_id;
         private Object vat_number;
-        private int order_subtotal_incl_tax;
-        private int order_subtotal_excl_tax;
+        private Double order_subtotal_incl_tax;
+        private Double order_subtotal_excl_tax;
         private int order_sub_total_discount_incl_tax;
         private int order_sub_total_discount_excl_tax;
         private int order_shipping_incl_tax;
@@ -131,19 +131,19 @@ public class OrderDelete {
             this.vat_number = vat_number;
         }
 
-        public int getOrder_subtotal_incl_tax() {
+        public Double getOrder_subtotal_incl_tax() {
             return order_subtotal_incl_tax;
         }
 
-        public void setOrder_subtotal_incl_tax(int order_subtotal_incl_tax) {
+        public void setOrder_subtotal_incl_tax(Double order_subtotal_incl_tax) {
             this.order_subtotal_incl_tax = order_subtotal_incl_tax;
         }
 
-        public int getOrder_subtotal_excl_tax() {
+        public Double getOrder_subtotal_excl_tax() {
             return order_subtotal_excl_tax;
         }
 
-        public void setOrder_subtotal_excl_tax(int order_subtotal_excl_tax) {
+        public void setOrder_subtotal_excl_tax(Double order_subtotal_excl_tax) {
             this.order_subtotal_excl_tax = order_subtotal_excl_tax;
         }
 
@@ -1098,10 +1098,10 @@ public class OrderDelete {
         public static class OrderItemsBean {
 
             private int quantity;
-            private int unit_price_incl_tax;
-            private int unit_price_excl_tax;
-            private int price_incl_tax;
-            private int price_excl_tax;
+            private Double unit_price_incl_tax;
+            private Double unit_price_excl_tax;
+            private Double price_incl_tax;
+            private Double price_excl_tax;
             private int discount_amount_incl_tax;
             private int discount_amount_excl_tax;
             private int original_product_cost;
@@ -1126,35 +1126,35 @@ public class OrderDelete {
                 this.quantity = quantity;
             }
 
-            public int getUnit_price_incl_tax() {
+            public Double getUnit_price_incl_tax() {
                 return unit_price_incl_tax;
             }
 
-            public void setUnit_price_incl_tax(int unit_price_incl_tax) {
+            public void setUnit_price_incl_tax(Double unit_price_incl_tax) {
                 this.unit_price_incl_tax = unit_price_incl_tax;
             }
 
-            public int getUnit_price_excl_tax() {
+            public Double getUnit_price_excl_tax() {
                 return unit_price_excl_tax;
             }
 
-            public void setUnit_price_excl_tax(int unit_price_excl_tax) {
+            public void setUnit_price_excl_tax(Double unit_price_excl_tax) {
                 this.unit_price_excl_tax = unit_price_excl_tax;
             }
 
-            public int getPrice_incl_tax() {
+            public Double getPrice_incl_tax() {
                 return price_incl_tax;
             }
 
-            public void setPrice_incl_tax(int price_incl_tax) {
+            public void setPrice_incl_tax(Double price_incl_tax) {
                 this.price_incl_tax = price_incl_tax;
             }
 
-            public int getPrice_excl_tax() {
+            public Double getPrice_excl_tax() {
                 return price_excl_tax;
             }
 
-            public void setPrice_excl_tax(int price_excl_tax) {
+            public void setPrice_excl_tax(Double price_excl_tax) {
                 this.price_excl_tax = price_excl_tax;
             }
 
@@ -1439,7 +1439,7 @@ public class OrderDelete {
                 private boolean available_for_pre_order;
                 private Object pre_order_availability_start_date_time_utc;
                 private boolean call_for_price;
-                private int price;
+                private Double price;
                 private String formatted_price;
                 private int old_price;
                 private String formatted_old_price;
@@ -1927,11 +1927,11 @@ public class OrderDelete {
                     this.call_for_price = call_for_price;
                 }
 
-                public int getPrice() {
+                public Double getPrice() {
                     return price;
                 }
 
-                public void setPrice(int price) {
+                public void setPrice(Double price) {
                     this.price = price;
                 }
 

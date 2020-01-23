@@ -1,392 +1,385 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <Button
+            android:id="@+id/btn_add_address"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/colorPrimary"
+            android:ems="8"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constrain_top"
+            app:layout_constraintStart_toStartOf="@+id/constrain_top"
+            app:layout_constraintTop_toBottomOf="@+id/constrain_top" />
+
+
+        <RelativeLayout
+            android:id="@+id/relative_option_dialog"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
-
-            <Button
-                android:id="@+id/btn_add_address"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_30sdp"
-                android:background="@drawable/rounded_rectangle"
-                android:backgroundTint="@color/colorPrimary"
-                android:ems="8"
-                android:text="@string/save"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/constrain_top"
-                app:layout_constraintStart_toStartOf="@+id/constrain_top"
-                app:layout_constraintTop_toBottomOf="@+id/constrain_top" />
-
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_black_opacity"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingTop="40dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="40dp"
+            android:visibility="gone">
 
             <RelativeLayout
-                android:id="@+id/relative_option_dialog"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_black_opacity"
-                android:orientation="vertical"
-                android:paddingLeft="20dp"
-                android:paddingTop="40dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="40dp"
-                android:visibility="gone">
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_shape">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="34dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/round_shape">
-
-                    <LinearLayout
-                        android:id="@+id/linear_bottom"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginTop="15dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tv_done"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_above="@+id/tv_cancel"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginRight="10dp"
-                            android:layout_weight="1"
-                            android:background="#414142"
-                            android:gravity="center"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
-                            android:text="@string/DoneLabel"
-                            android:textAllCaps="true"
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp"
-                            android:visibility="gone" />
-
-                        <TextView
-                            android:id="@+id/tv_cancel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:background="@color/colorPrimary"
-                            android:gravity="center"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
-                            android:text="@string/cancel"
-                            android:textAllCaps="true"
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp"
-                            android:visibility="visible" />
-
-                    </LinearLayout>
-
-                    <ListView
-                        android:id="@+id/lv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/linear_bottom"
-                        android:layout_below="@+id/tv_msg"
-                        android:layout_marginTop="15dp"
-                        android:dividerHeight="1dp" />
+                <LinearLayout
+                    android:id="@+id/linear_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_title"
-                        style="@android:style/TextAppearance.DeviceDefault.Medium"
+                        android:id="@+id/tv_done"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/tv_cancel"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:textAllCaps="true"
-                        android:textColor="#414142" />
-
-                    <TextView
-                        android:id="@+id/tv_msg"
-                        style="@android:style/TextAppearance.DeviceDefault.Medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_title"
-                        android:layout_centerHorizontal="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="#414142"
                         android:gravity="center"
-                        android:text="@string/SelectLabel"
-                        android:textColor="#7a7a7a"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/DoneLabel"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/white"
                         android:textSize="12sp"
                         android:visibility="gone" />
 
+                    <TextView
+                        android:id="@+id/tv_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/cancel"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        android:visibility="visible" />
 
-                </RelativeLayout>
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/linear_bottom"
+                    android:layout_below="@+id/tv_msg"
+                    android:layout_marginTop="15dp"
+                    android:dividerHeight="1dp" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:textAllCaps="true"
+                    android:textColor="#414142" />
+
+                <TextView
+                    android:id="@+id/tv_msg"
+                    style="@android:style/TextAppearance.DeviceDefault.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="@string/SelectLabel"
+                    android:textColor="#7a7a7a"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
 
             </RelativeLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constrain_top"
-                android:layout_width="match_parent"
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrain_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:background="@drawable/rounded_rectangle"
+            android:paddingBottom="@dimen/_8sdp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ProgressBar
+                android:id="@+id/loading1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:elevation="@dimen/_500sdp"
+                android:indeterminateDrawable="@drawable/custom_progress_bar"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:indeterminateDrawable="@drawable/custom_progress_bar"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_country"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_country"
+                android:layout_width="@dimen/_210sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/list3"
+                android:hint="@string/CountryLabel"
+                android:maxWidth="@dimen/_210sdp"
+                android:maxLines="1"
+                android:textAppearance="@style/EditTex"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="#929caa"
+                app:layout_constraintStart_toStartOf="@+id/et_email"
+                app:layout_constraintTop_toBottomOf="@+id/et_email" />
+
+
+            <TextView
+                android:id="@+id/et_city"
+                android:layout_width="@dimen/_210sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/list3"
+                android:hint="@string/area"
+                android:maxWidth="@dimen/_210sdp"
+                android:maxLines="1"
+                android:textAppearance="@style/EditTex"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="#929caa"
+                app:layout_constraintStart_toStartOf="@+id/tv_country"
+                app:layout_constraintTop_toBottomOf="@+id/tv_country" />
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_first_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/rounded_rectangle"
-                android:paddingBottom="@dimen/_8sdp"
+                android:hint="@string/first_name"
+                android:inputType="textEmailAddress"
+                android:minWidth="@dimen/_210sdp"
+                android:textAppearance="@style/EditTex"
+                android:textColorHint="@color/date"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/colorPrimary"
+                app:met_textColorHint="@android:color/darker_gray" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_last_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle"
+                android:hint="@string/last_name"
+                android:inputType="textEmailAddress"
+                android:minWidth="@dimen/_210sdp"
+                android:textAppearance="@style/EditTex"
+                android:textColorHint="@color/date"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/et_first_name"
+                app:layout_constraintStart_toStartOf="@+id/et_first_name"
+                app:layout_constraintTop_toBottomOf="@+id/et_first_name"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/colorPrimary"
+                app:met_textColorHint="@android:color/darker_gray" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:minWidth="@dimen/_210sdp"
+                android:textAppearance="@style/EditTex"
+                android:textColorHint="@color/date"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/et_last_name"
+                app:layout_constraintStart_toStartOf="@+id/et_last_name"
+                app:layout_constraintTop_toBottomOf="@+id/et_last_name"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/colorPrimary"
+                app:met_textColorHint="@android:color/darker_gray" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/rounded_rectangle"
+                android:hint="@string/address_title"
+                android:inputType="textMultiLine"
+                android:maxWidth="@dimen/_210sdp"
+                android:minWidth="@dimen/_210sdp"
+                android:textAppearance="@style/EditTex"
+                android:textColorHint="@color/date"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_email"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/colorPrimary"
+                app:met_textColorHint="@android:color/darker_gray" />
 
 
-                <ProgressBar
-                    android:id="@+id/loading1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_gravity="center_horizontal"
-                    android:indeterminateDrawable="@drawable/custom_progress_bar"
-                    android:visibility="gone"
-                    android:elevation="@dimen/_500sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@drawable/rounded_rectangle"
+                android:hint="@string/mobile"
+                android:inputType="number"
+                android:maxWidth="@dimen/_210sdp"
+                android:minWidth="@dimen/_210sdp"
+                android:textAppearance="@style/EditTex"
+                android:textColorHint="@color/date"
+                app:layout_constraintEnd_toEndOf="@+id/et_city"
+                app:layout_constraintStart_toStartOf="@+id/et_city"
+                app:layout_constraintTop_toBottomOf="@+id/et_city"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/colorPrimary"
+                app:met_textColorHint="@android:color/darker_gray" />
 
-                <ProgressBar
-                    android:id="@+id/loading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_gravity="center_horizontal"
-                    android:indeterminateDrawable="@drawable/custom_progress_bar"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_country"
-                    />
-
-
-                <TextView
-                    android:id="@+id/tv_country"
-                    android:layout_width="@dimen/_210sdp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/list3"
-                    android:hint="@string/CountryLabel"
-                    android:maxLines="1"
-                    android:maxWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="#929caa"
-                    app:layout_constraintStart_toStartOf="@+id/et_email"
-                    app:layout_constraintTop_toBottomOf="@+id/et_email" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_street_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle"
+                android:hint="@string/street"
+                android:inputType="number"
+                android:maxWidth="@dimen/_210sdp"
+                android:minWidth="@dimen/_210sdp"
+                android:textAppearance="@style/EditTex"
+                android:textColorHint="@color/date"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/et_phone"
+                app:layout_constraintStart_toStartOf="@+id/et_phone"
+                app:layout_constraintTop_toBottomOf="@+id/et_phone"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/colorPrimary"
+                app:met_textColorHint="@color/date" />
 
 
-                <TextView
-                    android:id="@+id/et_city"
-                    android:layout_width="@dimen/_210sdp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/list3"
-                    android:hint="@string/area"
-                    android:maxLines="1"
-                    android:maxWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="#929caa"
-                    app:layout_constraintStart_toStartOf="@+id/tv_country"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_country" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_block"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle"
+                android:hint="@string/block"
+                android:inputType="number"
+                android:maxWidth="@dimen/_210sdp"
+                android:minWidth="@dimen/_210sdp"
+                android:textAppearance="@style/EditTex"
+                android:textColorHint="@color/date"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/et_street_number"
+                app:layout_constraintStart_toStartOf="@+id/et_street_number"
+                app:layout_constraintTop_toBottomOf="@+id/et_street_number"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/colorPrimary"
+                app:met_textColorHint="@color/date" />
 
-
-
-
-
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/et_first_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_rectangle"
-                    android:hint="@string/first_name"
-                    android:visibility="visible"
-                    android:inputType="textEmailAddress"
-                    android:minWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColorHint="@color/date"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:met_floatingLabel="highlight"
-                    app:met_floatingLabelAnimating="true"
-                    app:met_floatingLabelTextColor="@color/colorPrimary"
-                    app:met_textColorHint="@android:color/darker_gray" />
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/et_last_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_rectangle"
-                    android:hint="@string/last_name"
-                    android:visibility="visible"
-                    android:inputType="textEmailAddress"
-                    android:minWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColorHint="@color/date"
-                    app:layout_constraintEnd_toEndOf="@+id/et_first_name"
-                    app:layout_constraintStart_toStartOf="@+id/et_first_name"
-                    app:layout_constraintTop_toBottomOf="@+id/et_first_name"
-                    app:met_floatingLabel="highlight"
-                    app:met_floatingLabelAnimating="true"
-                    app:met_floatingLabelTextColor="@color/colorPrimary"
-                    app:met_textColorHint="@android:color/darker_gray" />
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/et_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_rectangle"
-                    android:hint="@string/email"
-                    android:visibility="visible"
-                    android:inputType="textEmailAddress"
-                    android:minWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColorHint="@color/date"
-                    app:layout_constraintEnd_toEndOf="@+id/et_last_name"
-                    app:layout_constraintStart_toStartOf="@+id/et_last_name"
-                    app:layout_constraintTop_toBottomOf="@+id/et_last_name"
-                    app:met_floatingLabel="highlight"
-                    app:met_floatingLabelAnimating="true"
-                    app:met_floatingLabelTextColor="@color/colorPrimary"
-                    app:met_textColorHint="@android:color/darker_gray" />
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:visibility="gone"
-                    android:id="@+id/et_address_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_rectangle"
-                    android:hint="@string/address_title"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:inputType="textMultiLine"
-                    android:maxWidth="@dimen/_210sdp"
-                    android:minWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColorHint="@color/date"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_email"
-                    app:met_floatingLabel="highlight"
-                    app:met_floatingLabelAnimating="true"
-                    app:met_floatingLabelTextColor="@color/colorPrimary"
-                    app:met_textColorHint="@android:color/darker_gray" />
-
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/et_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:background="@drawable/rounded_rectangle"
-                    android:hint="@string/mobile"
-                    android:maxWidth="@dimen/_210sdp"
-                    android:inputType="number"
-                    android:minWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColorHint="@color/date"
-                    app:layout_constraintEnd_toEndOf="@+id/et_city"
-                    app:layout_constraintStart_toStartOf="@+id/et_city"
-                    app:layout_constraintTop_toBottomOf="@+id/et_city"
-                    app:met_floatingLabel="highlight"
-                    app:met_floatingLabelAnimating="true"
-                    app:met_floatingLabelTextColor="@color/colorPrimary"
-                    app:met_textColorHint="@android:color/darker_gray" />
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:visibility="visible"
-                    android:id="@+id/et_street_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_rectangle"
-                    android:hint="@string/street"
-                    android:maxWidth="@dimen/_210sdp"
-                    android:inputType="number"
-                    android:minWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColorHint="@color/date"
-                    app:layout_constraintEnd_toEndOf="@+id/et_phone"
-                    app:layout_constraintStart_toStartOf="@+id/et_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/et_phone"
-                    app:met_floatingLabel="highlight"
-                    app:met_floatingLabelAnimating="true"
-                    app:met_floatingLabelTextColor="@color/colorPrimary"
-                    app:met_textColorHint="@color/date" />
-
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:visibility="visible"
-                    android:id="@+id/et_block"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_rectangle"
-                    android:hint="@string/block"
-                    android:inputType="number"
-                    android:maxWidth="@dimen/_210sdp"
-                    android:minWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColorHint="@color/date"
-                    app:layout_constraintEnd_toEndOf="@+id/et_street_number"
-                    app:layout_constraintStart_toStartOf="@+id/et_street_number"
-                    app:layout_constraintTop_toBottomOf="@+id/et_street_number"
-                    app:met_floatingLabel="highlight"
-                    app:met_floatingLabelAnimating="true"
-                    app:met_floatingLabelTextColor="@color/colorPrimary"
-                    app:met_textColorHint="@color/date" />
-
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/et_address_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:background="@drawable/rounded_rectangle"
-                    android:hint="@string/address_details"
-                    android:inputType="textMultiLine"
-                    android:maxWidth="@dimen/_210sdp"
-                    android:maxLines="4"
-                    android:minWidth="@dimen/_210sdp"
-                    android:textAppearance="@style/EditTex"
-                    android:textColorHint="@color/date"
-                    app:layout_constraintEnd_toEndOf="@+id/et_block"
-                    app:layout_constraintStart_toStartOf="@+id/et_block"
-                    app:layout_constraintTop_toBottomOf="@+id/et_block"
-                    app:met_floatingLabel="highlight"
-                    app:met_floatingLabelAnimating="true"
-                    app:met_floatingLabelTextColor="@color/colorPrimary"
-                    app:met_textColorHint="@color/date" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_address_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/rounded_rectangle"
+                android:hint="@string/address_details"
+                android:inputType="textMultiLine"
+                android:maxWidth="@dimen/_210sdp"
+                android:maxLines="4"
+                android:minWidth="@dimen/_210sdp"
+                android:textAppearance="@style/EditTex"
+                android:textColorHint="@color/date"
+                app:layout_constraintEnd_toEndOf="@+id/et_block"
+                app:layout_constraintStart_toStartOf="@+id/et_block"
+                app:layout_constraintTop_toBottomOf="@+id/et_block"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelTextColor="@color/colorPrimary"
+                app:met_textColorHint="@color/date" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

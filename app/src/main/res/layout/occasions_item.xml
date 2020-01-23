@@ -21,7 +21,6 @@
         android:layout_height="wrap_content"
         android:lines="1"
         android:ellipsize="end"
-        android:text="Omar"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_centerVertical="true"
