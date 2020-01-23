@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/featured_products_noimg"
             android:scaleType="fitXY"
-            android:src="@drawable/lang_icon" />
+            android:src="@drawable/featured_products_noimg" />
 
 
         <ImageView
